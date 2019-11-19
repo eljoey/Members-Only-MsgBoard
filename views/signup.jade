@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1(style='text-align: center;')= title
+
+    form(action='', method='post')
+        div.form-group
+            label(for='username') Username: 
+            input#username.form-control(type='text' name='username' placeholder='Username' required)
+            label(for='password') Password: 
+            input#password.form-control(type="text" name="password" placeholder='Password' required)
+            label(for='confirm-pass') Confirm Password: 
+            input#confirm-pass.form-control(type="text" name="confirm-pass" placeholder='Confirm Password' required)
+        button.btn.btn-primary(type='submit') Sign Up
