@@ -1,4 +1,9 @@
 extends layout
 
 block content
-    h1 THIS IS A INDEX
+    if user
+        h1 WELCOME BACK #{user.username} 
+            a(href='/logout') logout
+    else 
+        h1 Bleep Boop
+            a(href='login') login

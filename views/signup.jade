@@ -10,11 +10,11 @@ block content
             label(for='last_name') Last Name: 
             input#last_name.form-control(type='text' name='last_name' placeholder='Last Name' value=(undefined == user ? '' : user.last_name))
             label(for='email') E-Mail: 
-            input#email.form-control(type='text' name='email' placeholder='Username' value=(undefined == user ? '' : user.email) required)
+            input#email.form-control(type='text' name='email' placeholder='Username' value=(undefined == user ? '' : user.username) required)
             label(for='password') Password: 
-            input#password.form-control(type="text" name="password" placeholder='Password'  required)
+            input#password.form-control(type="password" name="password" placeholder='Password'  required)
             label(for='confirm-pass') Confirm Password: 
-            input#confirm-pass.form-control(type="text" name="confirm-pass"  placeholder='Confirm Password' required)
+            input#confirm-pass.form-control(type="password" name="confirm-pass"  placeholder='Confirm Password' required)
         button.btn.btn-primary(type='submit') Sign Up
 
     if errors

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1(style='text-align: center;')= title
+
+    form(action="", method="post")
+        div.form-group
+            label(for='username') Username: 
+            input#username.form-control(type='text' name='username' placeholder='Username')
+            label(for='password') Password: 
+            input#password.form-control(type='password' name='password' placeholder='Password')
+        button.btn.btn-primary(type='submit') Log In
+
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
