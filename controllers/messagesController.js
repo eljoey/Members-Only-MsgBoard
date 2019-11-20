@@ -8,7 +8,7 @@ exports.messages_get = (req, res, next) => {
 }
 
 exports.message_create_get = (req, res, next) => {
-  res.send('Create Message: GET')
+  res.render('message_form')
 }
 
 exports.message_create_post = (req, res, next) => {
