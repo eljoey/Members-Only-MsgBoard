@@ -7,7 +7,10 @@ const loginHandling = new LocalStrategy((username, password, done) => {
     if (err) return done(err)
 
     if (!user) {
-      return done(null, false, { msg: 'Incorrect Username' })
+      return done(null, false, {
+        username: username,
+        msg: 'Incorrect Username'
+      })
     }
 
     bcrypt.compare(password, user.password, (err, res) => {
@@ -42,9 +45,21 @@ const developmentErrorHandling = (err, req, res, next) => {
   res.render('error')
 }
 
+const serializeUser = (user, done) => {
+  done(null, user.id)
+}
+
+const deserializeUser = (id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user)
+  })
+}
+
 module.exports = {
   loginHandling,
   passdownLoggedInUser,
   errorHandling,
-  developmentErrorHandling
+  developmentErrorHandling,
+  serializeUser,
+  deserializeUser
 }

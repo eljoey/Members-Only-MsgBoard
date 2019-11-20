@@ -5,8 +5,6 @@ const express = require('express')
 const session = require('express-session')
 const passport = require('passport')
 const path = require('path')
-
-const User = require('./models/user')
 const middleware = require('./utils/middleware')
 
 const app = express()
@@ -35,18 +33,10 @@ db.on('error', console.error.bind(console, 'MongoDB connection error: '))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
 
-// Setup for Password Auth
+// Session Handling
 passport.use(middleware.loginHandling)
-
-// Sessions and serialization
-passport.serializeUser((user, done) => {
-  done(null, user.id)
-})
-passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-    done(err, user)
-  })
-})
+passport.serializeUser(middleware.serializeUser)
+passport.deserializeUser(middleware.deserializeUser)
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }))
 app.use(passport.initialize())
