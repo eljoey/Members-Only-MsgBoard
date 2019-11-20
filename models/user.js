@@ -8,7 +8,8 @@ const UserSchema = new Schema({
   username: { type: String, required: true, min: 2, max: 100 },
   password: { type: String, required: true, min: 7, max: 30 },
   membership: { type: String, default: 'non-member' },
-  admin: { type: Boolean, default: false }
+  admin: { type: Boolean, default: false },
+  messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }]
 })
 
 // Export model

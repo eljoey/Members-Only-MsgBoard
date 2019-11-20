@@ -6,7 +6,8 @@ const Schema = mongoose.Schema
 const MessageSchema = new Schema({
   title: { type: String, required: true, min: 2 },
   text: { type: String, required: true },
-  timestamp: { type: Date, required: true, default: Date.now }
+  timestamp: { type: Date, required: true, default: Date.now },
+  user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 
 // Date Virtual
