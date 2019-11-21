@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+
+    for message in messages
+        h4 #{message.title}
+        p #{message.text}
+        if currentUser
+            p #{message.user.first_name}
+        else
+            p Anon        

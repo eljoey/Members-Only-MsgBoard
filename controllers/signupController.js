@@ -35,7 +35,7 @@ exports.signup_post = [
   sanitizeBody('confirm-pass').escape(),
 
   // Process
-  (req, res) => {
+  (req, res, next) => {
     const errors = validationResult(req)
 
     const salt = bcrypt.genSaltSync(10)
