@@ -16,7 +16,7 @@ MessageSchema.virtual('date_formatted').get(() => {
 })
 
 // Date, Time from current
-MessageSchema.virtual('date_difference').get(() => {
+MessageSchema.virtual('date_difference').get(function() {
   return moment(this.timestamp).fromNow()
 })
 

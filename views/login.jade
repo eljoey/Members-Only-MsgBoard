@@ -3,7 +3,7 @@ extends layout
 block content
     h1(style='text-align: center;')= title
 
-    form.w-50.mx-auto.form-signin(action="", method="post")
+    form.my-auto.form-signin(action="", method="post")
         div.form-label-group
             input#username.form-control(type='text' name='username' value=(undefined == info ? '' : info.username) placeholder='Username' required)
             label(for='username') Username

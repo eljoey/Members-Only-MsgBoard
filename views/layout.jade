@@ -29,6 +29,10 @@ html(lang="en")
                         a.dropdown-item(href='/messages/create') Create Message
             if !currentUser
                 a.my-2(href='/login') Log In
+                | &nbsp; 
+                p.my-2.text-light.size-lg | 
+                | &nbsp; 
+                a.my-2(href='/signup') Sign Up
             else if !currentUser.admin
                 p.my-2.text-light #{currentUser.first_name + ' ' + currentUser.last_name}
                 | &nbsp;             

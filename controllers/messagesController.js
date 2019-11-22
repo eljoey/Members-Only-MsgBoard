@@ -8,6 +8,9 @@ exports.messages_get = (req, res, next) => {
     .exec((err, list_messages) => {
       if (err) return next(err)
 
+      // Sort messages, newest first
+      list_messages.sort((a, b) => b.timestamp - a.timestamp)
+
       res.render('messages', {
         title: 'List of Messages',
         messages: list_messages

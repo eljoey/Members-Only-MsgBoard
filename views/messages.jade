@@ -1,12 +1,16 @@
 extends layout
 
 block content
-    h1= title
+    h5.border-bottom.border-gray.pb-2.mb-0= title
 
-    for message in messages
-        h4 #{message.title}
-        p #{message.text}
-        if currentUser
-            p #{message.user.first_name}
-        else
-            p Anon        
+    if messages
+        for message in messages
+            div.message            
+                div #[strong #{message.title}] 
+                    div #{message.text}                 
+                    if currentUser
+                        p By #{message.user.first_name + ' ' + message.user.last_name} #{message.date_difference}
+                    else
+                        p Anon #{message.date_difference}
+    else
+        p There are no messages! Create a message to get us started.
