@@ -12,5 +12,9 @@ const UserSchema = new Schema({
   messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }]
 })
 
+// Name Virtual
+UserSchema.virtual('name').get(() => {
+  return this.first_name + ' ' + this.last_name
+})
 // Export model
 module.exports = mongoose.model('User', UserSchema)

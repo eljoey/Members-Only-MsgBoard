@@ -3,13 +3,14 @@ extends layout
 block content
     h1(style=('text-align: center;'))= title
     
-    form(action="", method="post")
-        div.form-group
-            label(for='title') Title: 
+    form.w-50.mx-auto(action="", method="post")
+        div.form-label-group
             input#title.form-control(type='text' name='title' value=(undefined == info ? '' : info.title) placeholder='Title')
-            label(for='message') Message:
-            textarea#message.form-control(name='message' rows='3' placeholder='Enter message here')
-        button.btn.btn-primary(type='submit') Create Message
+            label(for='title') Title
+        div.form-label-group
+            textarea#message.h-50.form-control(name='message' rows='6' placeholder='Enter message here')
+            label(for='message') Message
+        button.btn.btn-primary.btn-block(type='submit') Create Message
     
     if errors
         ul

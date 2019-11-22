@@ -2,11 +2,6 @@ extends layout
 
 block content
     if user
-        h1 WELCOME BACK #{user.username} 
-        a(href='/logout') logout 
-        | 
-        a(href='/messages/create') Create New Message
+        h1 WELCOME BACK  
     else 
-        h1 Bleep Boop
-            a(href='login') login
-            a(href='/signup') Sign Up
+        h1 SIGN UP BITCH
