@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h1.text-center= title
+
+    if !currentUser
+        h3.mt-5.text-center(href='/login') You must 
+            a(href='/login') log-in
+            |&nbsp;first!
+    else if currentUser.membership == 'non-member'
+        h3.mt-5.text-center What's 2 + 2?
+        form.my-auto.form-signin(action="", method="post")
+            div.form-label-group
+                input#passcode.form-control(type='text' name='passcode' value=(undefined == info ? '' : info.username) placeholder='Username' required)
+                label(for='username') Passcode
+            button.btn.btn-primary.btn-block(type='submit') Submit
+    
+    else 
+        h3.mt-5.text-center You are already a member!    
+
+    if errors
+        for error in errors
+            ul
+                li!= error.msg
