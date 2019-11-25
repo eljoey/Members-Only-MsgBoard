@@ -12,7 +12,7 @@ exports.messages_get = (req, res, next) => {
       list_messages.sort((a, b) => b.timestamp - a.timestamp)
 
       res.render('messages', {
-        title: 'List of Messages',
+        title: 'Latest Messages',
         messages: list_messages
       })
     })

@@ -2,6 +2,34 @@ extends layout
 
 block content
     if user
-        h1 WELCOME BACK  
+        h1.text-center Welcome Back #{user.first_name}
     else 
-        h1 SIGN UP BITCH
+        h1.text-center Welcome To This SUPER Secret Message Board
+
+    div.info-container
+        h3 How this board works:
+
+        ul
+            li All messages are displayed.
+            li To create a new message Sign-up/login and go to create message page.
+            li Only members are able to see the authors of each message.
+                ul
+                    li To become a member you must answer the #[strong #[i VERY]] complicated math problem located 
+                        a(href='#') here
+            li If you would like to test and dont want to sign up here are some accounts of each type to use.  I have made it so that you cannot modify(change membership status or remove admin) these accounts.form-label-group
+                ul
+                    li Non-Member Account -
+                        ul
+                            li Username: JaneDoe
+                            li Password: JaneDoe
+                    li Member Account -
+                        ul
+                            li Username: JohnDoe
+                            li Password: JohnDoe
+                    li Admin Account -
+                        ul
+                            li Username: Admin
+                            li Password: SuperAdmin
+
+
+        

@@ -13,20 +13,22 @@ html(lang="en")
         title Document
     body
 
-    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-        a.navbar-brand(href='#') Members-Only
+    nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+        a.navbar-brand(href='/') Members-Only
         button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
             span.navbar-toggler-icon
 
         div.collapse.navbar-collapse#navbarSupportedContent
             ul.navbar-nav.mx-auto
-                li.nav-item
-                    a.nav-link.active(href='/') Home
-                li.nav-item.dropdown
-                    a.nav-link.dropdown-toggle.active#navbarDropdown(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') Messages
-                    div.dropdown-menu(aria-labelledby='navbarDropdown')
-                        a.dropdown-item(href='/messages') View Messages
-                        a.dropdown-item(href='/messages/create') Create Message
+                if currentUser                   
+                    li.nav-item.dropdown
+                        a.nav-link.dropdown-toggle.active#navbarDropdown(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') Message Board
+                        div.dropdown-menu(aria-labelledby='navbarDropdown')
+                            a.dropdown-item(href='/messages') View Messages
+                            a.dropdown-item(href='/messages/create') Create Message
+                else
+                    li.nav-item
+                        a.nav-link.active(href='/messages') Message Board
             if !currentUser
                 a.my-2(href='/login') Log In
                 | &nbsp; 
@@ -35,7 +37,9 @@ html(lang="en")
                 a.my-2(href='/signup') Sign Up
             else if !currentUser.admin
                 p.my-2.text-light #{currentUser.first_name + ' ' + currentUser.last_name}
-                | &nbsp;             
+                | &nbsp;
+                p.my-2.text-light.size-lg | 
+                | &nbsp;         
                 a.my-2(href='/logout') Log Out
             else
                 pmy-2.text-light hello admin |
@@ -45,6 +49,5 @@ html(lang="en")
                 p.my-2.text-light |
                 | &nbsp;
                 a.my-2(href='/logout') Log Out
-
 
     block content

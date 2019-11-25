@@ -17,9 +17,9 @@ exports.signup_post = [
   body('last_name', 'Last Name must not be empty')
     .trim()
     .isLength({ min: 2 }),
-  body('email', 'E-mail must be valid')
+  body('username', 'Username must not be empty')
     .trim()
-    .isEmail(),
+    .isLength({ min: 2 }),
   body('password', 'Password must be atleast 7 characters long')
     .trim()
     .isLength({ min: 7 }),
@@ -30,7 +30,7 @@ exports.signup_post = [
   // Sanitize
   sanitizeBody('first_name').escape(),
   sanitizeBody('last_name').escape(),
-  sanitizeBody('email').escape(),
+  sanitizeBody('username').escape(),
   sanitizeBody('password').escape(),
   sanitizeBody('confirm-pass').escape(),
 
@@ -44,7 +44,7 @@ exports.signup_post = [
     const user = new User({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      username: req.body.email,
+      username: req.body.username,
       password: hash
     })
 
@@ -60,7 +60,7 @@ exports.signup_post = [
         if (err) return next(err)
 
         if (found_user) {
-          const duplicateUser = { msg: 'Email already in use' }
+          const duplicateUser = { msg: 'Username already in use' }
           errors.errors.push(duplicateUser)
 
           res.render('signup', {

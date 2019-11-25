@@ -3,14 +3,14 @@ extends layout
 block content
     h1(style='text-align: center;')= title
 
-    form(action='', method='post')
+    form.w-50.mx-auto(action='', method='post')
         div.form-group
             label(for='first_name') First Name: 
             input#first_name.form-control(type='text' name='first_name' placeholder='First Name' value=(undefined == user ? '' : user.first_name))
             label(for='last_name') Last Name: 
             input#last_name.form-control(type='text' name='last_name' placeholder='Last Name' value=(undefined == user ? '' : user.last_name))
-            label(for='email') E-Mail: 
-            input#email.form-control(type='text' name='email' placeholder='Username' value=(undefined == user ? '' : user.username) required)
+            label(for='username') Username: 
+            input#username.form-control(type='text' name='username' placeholder='Username' value=(undefined == user ? '' : user.username) required)
             label(for='password') Password: 
             input#password.form-control(type="password" name="password" placeholder='Password'  required)
             label(for='confirm-pass') Confirm Password: 
