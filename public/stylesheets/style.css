@@ -2,3 +2,9 @@
 .info-container {
   margin: 15px;
 }
+
+.msgContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

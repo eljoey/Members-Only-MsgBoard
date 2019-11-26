@@ -1,19 +1,49 @@
 extends layout
 
 block content
-    div.message-container
+    div.container-fluid.mt-3
 
-        h5.border-bottom.border-gray.pb-2.mb-0= title
+        h5.border-bottom.border-primary= title
 
+        div.modal.fade#confirm
+            div.modal-dialog.modal-dialog-centered(role='document')
+                div.modal-content
+                    div.modal-header
+                        h5.modal-title#confirmLabel Delete Message
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') &times;
+                    div.modal-body Are you sure you want to delete this message?
+                    div.modal-footer
+                        button.btn.btn-warning#delete(type='button' data-dismiss='modal') Delete
+                        button.btn(type='button' data-dismiss='modal') Cancel
     
         if messages
             for message in messages
-                div.message            
-                    div #[strong #{message.title}] 
-                        div #{message.text}                 
-                        if currentUser.membership == 'member'
-                            p By #{message.user.username} #{message.date_difference}
-                        else
-                            p By Anon #{message.date_difference}
+                div.msgContainer.border-bottom
+                    div.message            
+                        div #[strong #{message.title}] 
+                            div #{message.text}                 
+                            if currentUser.membership == 'member'
+                                p By #{message.user.username} #{message.date_difference}
+                            else
+                                p By Anon #{message.date_difference}
+                    if currentUser.admin
+                        div.deleteMsg
+                            form(action="", method="post")
+                                input(type="hidden", name="messageid" value=(message.id))
+                                button.btn.btn-dark(type="submit" name='removeMessage') Delete
         else
             p There are no messages! Create a message to get us started.
+
+    script.
+        $('button[name="removeMessage"]').on('click', function(e) {
+            var $form = $(this).closest('form');
+            e.preventDefault();
+            $('#confirm').modal({
+                backdrop: 'static',
+                keyboard: false
+            })
+            .on('click', '#delete', function(e) {
+                $form.trigger('submit');
+            });
+        });
