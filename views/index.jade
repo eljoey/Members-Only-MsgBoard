@@ -1,35 +1,36 @@
 extends layout
 
 block content
-    if user
-        h1.text-center Welcome Back #{user.first_name}
-    else 
-        h1.text-center Welcome To This SUPER Secret Message Board
+    div.container-fluid
+        if user
+            h1.text-center Welcome Back #{user.first_name}
+        else 
+            h1.text-center Welcome To This SUPER Secret Message Board
 
-    div.info-container
-        h3 How this board works:
+        div.info-container
+            h3 How this board works:
 
-        ul
-            li All messages are displayed.
-            li To create a new message Sign-up/login and go to create message page.
-            li Only members are able to see the authors of each message.
-                ul
-                    li To become a member you must answer the #[strong #[i VERY]] complicated math problem located 
-                        a(href='/member/join') here
-            li If you would like to test and dont want to sign up here are some accounts of each type to use.
-                ul
-                    li Non-Member Account - (made it so you cannot become a member.  To test becoming a member create a new account)
-                        ul
-                            li Username: JaneDoe
-                            li Password: JaneDoe
-                    li Member Account -
-                        ul
-                            li Username: JohnDoe
-                            li Password: JohnDoe
-                    li Admin Account - (Able to delete messages)
-                        ul
-                            li Username: Admin
-                            li Password: SuperAdmin
+            ul
+                li All messages are displayed.
+                li To create a new message Sign-up/login and go to create message page.
+                li Only members are able to see the authors of each message.
+                    ul
+                        li To become a member you must answer the #[strong #[i VERY]] complicated math problem located 
+                            a(href='/member/join') here
+                li If you would like to test and dont want to sign up here are some accounts of each type to use.
+                    ul
+                        li Non-Member Account - (made it so you cannot become a member.  To test becoming a member create a new account)
+                            ul
+                                li Username: JaneDoe
+                                li Password: JaneDoe
+                        li Member Account -
+                            ul
+                                li Username: JohnDoe
+                                li Password: JohnDoe
+                        li Admin Account - (Able to delete messages)
+                            ul
+                                li Username: Admin
+                                li Password: SuperAdmin
 
 
         

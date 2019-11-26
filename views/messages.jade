@@ -14,24 +14,26 @@ block content
                             span(aria-hidden='true') &times;
                     div.modal-body Are you sure you want to delete this message?
                     div.modal-footer
-                        button.btn.btn-warning#delete(type='button' data-dismiss='modal') Delete
-                        button.btn(type='button' data-dismiss='modal') Cancel
+                        button.btn.btn-info(type='button' data-dismiss='modal') Cancel
+                        button.btn.btn-danger#delete(type='button' data-dismiss='modal') Delete
     
         if messages
             for message in messages
-                div.msgContainer.border-bottom
-                    div.message            
-                        div #[strong #{message.title}] 
-                            div #{message.text}                 
-                            if currentUser && currentUser.membership == 'member'
-                                p By #{message.user.username} #{message.date_difference}
-                            else
-                                p By Anon #{message.date_difference}
-                    if currentUser && currentUser.admin
-                        div.deleteMsg
-                            form(action="", method="post")
-                                input(type="hidden", name="messageid" value=(message.id))
-                                button.btn.btn-dark(type="submit" name='removeMessage') Delete
+                div.container-fluid.w-85
+                    div.msgContainer.border-bottom.border-secondary
+                        div.message.m-1
+                            div #[strong #{message.title}] 
+                                blockquote.blockquote.ml-3 
+                                    p.my-0 #{message.text}                 
+                                    if currentUser && currentUser.membership == 'member'
+                                        footer.blockquote-footer #{message.user.username} #{message.date_difference}
+                                    else
+                                        footer.blockquote-footer Anon #{message.date_difference}
+                        if currentUser && currentUser.admin
+                            div.deleteMsg
+                                form(action="", method="post")
+                                    input(type="hidden", name="messageid" value=(message.id))
+                                    button.btn.btn-dark(type="submit" name='removeMessage') Delete
         else
             p There are no messages! Create a message to get us started.
 
