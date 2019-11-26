@@ -18,6 +18,14 @@ exports.messages_get = (req, res, next) => {
     })
 }
 
+exports.messages_post = (req, res, next) => {
+  Message.findByIdAndRemove(req.body.messageid).exec(err => {
+    if (err) return next(err)
+
+    res.redirect('/messages')
+  })
+}
+
 exports.message_create_get = (req, res, next) => {
   // Redirects to login if user is not logged in.
   if (res.locals.currentUser) {

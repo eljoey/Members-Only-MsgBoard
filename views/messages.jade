@@ -23,11 +23,11 @@ block content
                     div.message            
                         div #[strong #{message.title}] 
                             div #{message.text}                 
-                            if currentUser.membership == 'member'
+                            if currentUser && currentUser.membership == 'member'
                                 p By #{message.user.username} #{message.date_difference}
                             else
                                 p By Anon #{message.date_difference}
-                    if currentUser.admin
+                    if currentUser && currentUser.admin
                         div.deleteMsg
                             form(action="", method="post")
                                 input(type="hidden", name="messageid" value=(message.id))
