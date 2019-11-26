@@ -30,24 +30,20 @@ html(lang="en")
                     li.nav-item
                         a.nav-link.active(href='/messages') Message Board
             if !currentUser
-                a.my-2(href='/login') Log In
-                | &nbsp; 
-                p.my-2.text-light.size-lg | 
-                | &nbsp; 
-                a.my-2(href='/signup') Sign Up
-            else if !currentUser.admin
-                p.my-2.text-light #{currentUser.first_name + ' ' + currentUser.last_name}
-                | &nbsp;
-                p.my-2.text-light.size-lg | 
-                | &nbsp;         
-                a.my-2(href='/logout') Log Out
-            else
-                pmy-2.text-light hello admin |
-                | &nbsp;
-                a.my-2(href='#') Admin Panel 
-                | &nbsp;
-                p.my-2.text-light |
-                | &nbsp;
-                a.my-2(href='/logout') Log Out
+                ul.navbar-nav.mr-2
+                    a(href='/login') Log In                    
+                ul.navbar-nav
+                    a(href='/signup') Sign Up
+            else 
+                ul.navbar-nav.dropdown
+                    a.nav-link.dropdown-toggle.active#navbarDropdown(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{currentUser.first_name}
+                    div.dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdown')
+                        if currentUser.membership == 'non-member'
+                            a.dropdown-item(href='/member/join') Join the club
+                        if currentUser.admin
+                            a.dropdown-item.disabled(href='#') PRAISE THE ADMIN
+                        a.dropdown-item(href='/logout') Log Out
+                
+            
 
     block content
