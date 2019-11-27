@@ -14,6 +14,7 @@ const signupRouter = require('./routes/signup')
 const messagesRouter = require('./routes/messages')
 const logoutRouter = require('./routes/logout')
 const memberRouter = require('./routes/member')
+const adminRouter = require('./routes/admin')
 
 // Mongoose
 const mongoose = require('mongoose')
@@ -59,6 +60,7 @@ app.use('/signup', signupRouter)
 app.use('/messages', messagesRouter)
 app.use('/logout', logoutRouter)
 app.use('/member', memberRouter)
+app.use('/admin', adminRouter)
 
 // Error handling
 app.use(middleware.errorHandling)

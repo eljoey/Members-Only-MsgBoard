@@ -41,7 +41,7 @@ html(lang="en")
                         if currentUser.membership == 'non-member'
                             a.dropdown-item(href='/member/join') Join the club
                         if currentUser.admin
-                            a.dropdown-item.disabled(href='#') PRAISE THE ADMIN
+                            a.dropdown-item(href='/admin') Admin Panel
                         a.dropdown-item(href='/logout') Log Out
                 
             

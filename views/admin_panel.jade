@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div.adminPanel
+        h1= title
+
+        if users
+            for user in users
+                form(action="", method="post")
+                    label(for='membership') #{user.username}:
+                        select.form-control.w-60(name='membership')
+                            option(selected=(user.membership == 'non-member') value='non-member') Non-Member 
+                            option(selected=(user.membership == 'member') value='member') Member
+                        input(type='hidden' name='userid' value=user._id)
+                    button.btn.btn-primary(type='submit') Update
+        else
+            p There are no users in the db.
