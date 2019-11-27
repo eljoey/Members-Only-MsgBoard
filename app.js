@@ -73,5 +73,4 @@ app.use('/admin', adminRouter)
 app.use(middleware.errorHandling)
 app.use(middleware.developmentErrorHandling)
 
-const PORT = process.env.PORT
-app.listen(PORT, () => console.log('applistening on port 3000!'))
+app.listen(3000, () => console.log('applistening on port 3000!'))
