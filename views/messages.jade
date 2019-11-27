@@ -3,7 +3,10 @@ extends layout
 block content
     div.container-fluid.mt-3
 
-        h5.border-bottom.border-primary= title
+        div.container-fluid.border-bottom.border-primary.d-flex.justify-content-between
+            h4.my-auto= title
+            if currentUser
+                a.btn.btn-primary.m-1(href='/messages/create') Create Message
 
         div.modal.fade#confirm
             div.modal-dialog.modal-dialog-centered(role='document')
