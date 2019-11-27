@@ -42,6 +42,7 @@ exports.admin_panel_post = [
       res.redirect('/admin')
       return
     } else {
+      // Find out if this is bad practice(having a update inside of a find)
       User.findById(req.body.userid).exec((err, foundUser) => {
         if (err) return next(err)
 

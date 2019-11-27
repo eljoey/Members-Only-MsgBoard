@@ -5,8 +5,12 @@ const session = require('express-session')
 const passport = require('passport')
 const path = require('path')
 const middleware = require('./utils/middleware')
+const compression = require('compression')
+const helmet = require('helmet')
 
 const app = express()
+
+app.use(helmet())
 
 // Routers
 const loginRouter = require('./routes/login')
@@ -47,6 +51,9 @@ app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(express.urlencoded({ extended: false }))
+
+// Compress all routes
+app.use(compression())
 
 app.use(express.static(path.join(__dirname, 'public')))
 
